@@ -1,5 +1,7 @@
 package java8.ex01;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 import org.junit.Test;
@@ -19,6 +21,13 @@ public class Method_01_Test {
 
         // TODO créer une méthode int sumAge()
         // TODO Cette méthode retourne le résultat de l'addition des ages des personnes
+        default int sumAge() {
+        	int ages = 0;
+        	for (Person person : findAll()) {
+				ages += person.getAge();
+			}
+        	return ages;
+        }
     }
     // end::IDao[]
 
@@ -48,7 +57,7 @@ public class Method_01_Test {
         DaoA daoA = new DaoA();
 
         // TODO invoquer la méthode sumAge pour que le test soit passant
-        int result = 0;
+        int result = daoA.sumAge();
 
         assert result == 210;
     }
@@ -59,7 +68,7 @@ public class Method_01_Test {
         DaoB daoB = new DaoB();
 
         // TODO invoquer la méthode sumAge pour que le test soit passant
-        int result = 0;
+        int result = daoB.sumAge();
 
         assert result == 5050;
 
